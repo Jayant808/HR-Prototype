@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive HR Tech Prototype</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+    .navbar {
+      background: #0073e6;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .navbar a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border: 2px solid #ccc;
+    }
+    .screen {
+      display: none;
+    }
+    .screen.active {
+      display: block;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      margin-top: 10px;
+      background: #0073e6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a onclick="showScreen('dashboard')">Dashboard</a>
+    <a onclick="showScreen('mentoring')">Mentoring</a>
+    <a onclick="showScreen('training')">Training & Feedback</a>
+    <a onclick="showScreen('recognition')">Recognition</a>
+  </div>
+  <div class="container">
+    <!-- Dashboard Screen -->
+    <div id="dashboard" class="screen active">
+      <h2>Dashboard</h2>
+      <p>Real-time analytics displaying generational metrics, engagement scores, and performance data.</p>
+      <p><a class="btn" onclick="showScreen('mentoring')">Go to Mentoring Module</a></p>
+    </div>
+    <!-- Mentoring Module Screen -->
+    <div id="mentoring" class="screen">
+      <h2>Mentoring Module</h2>
+      <p>Interactive interface for pairing mentors with mentees and scheduling sessions for effective knowledge transfer.</p>
+      <p><a class="btn" onclick="showScreen('training')">Proceed to Training & Feedback</a></p>
+    </div>
+    <!-- Training & Feedback Hub Screen -->
+    <div id="training" class="screen">
+      <h2>Training & Feedback Hub</h2>
+      <p>Access personalized training modules and a portal for continuous feedback and skill development.</p>
+      <p><a class="btn" onclick="showScreen('recognition')">Go to Recognition Module</a></p>
+    </div>
+    <!-- Employee Engagement & Recognition Screen -->
+    <div id="recognition" class="screen">
+      <h2>Employee Engagement & Recognition</h2>
+      <p>Gamified rewards system that offers badges, points, and virtual recognition for mentoring and performance milestones.</p>
+      <p><a class="btn" onclick="showScreen('dashboard')">Return to Dashboard</a></p>
+    </div>
+  </div>
+  <footer>
+    Interactive HR Tech Prototype – Experience the user flow by clicking through the screens.
+  </footer>
+  <script>
+    function showScreen(screenId) {
+      var screens = document.getElementsByClassName('screen');
+      for(var i = 0; i < screens.length; i++){
+        screens[i].classList.remove('active');
+      }
+      document.getElementById(screenId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
