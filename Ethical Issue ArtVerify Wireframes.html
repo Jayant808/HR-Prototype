@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ArtVerify™ Detailed Wireframes</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+    .tab-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    /* Tab Buttons */
+    .tabs {
+      background: linear-gradient(90deg, #0073e6, #005bb5);
+      display: flex;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 16px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    .tabs button:hover {
+      background: #004f99;
+    }
+    .tabs button.active {
+      background: #003f7d;
+      font-weight: bold;
+    }
+    /* Tab Content */
+    .tabcontent {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 0.5s;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Section Titles */
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #0073e6;
+      padding-bottom: 5px;
+      color: #0073e6;
+    }
+    /* Common Wireframe Box */
+    .wireframe-box {
+      background: #e6f7ff;
+      border: 2px dashed #0073e6;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    /* Upload Screen Styles */
+    #upload .upload-area {
+      border: 3px dashed #0073e6;
+      padding: 50px;
+      text-align: center;
+      font-size: 18px;
+      color: #0073e6;
+      border-radius: 6px;
+      background: #fff;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    #upload .upload-area input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      left: 0;
+      top: 0;
+    }
+    #upload .file-info {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #555;
+    }
+    #upload .tools {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+    #upload .tools div {
+      background: #fff;
+      border: 1px solid #0073e6;
+      padding: 12px;
+      width: 22%;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #0073e6;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    /* Dashboard Styles */
+    #dashboard .score-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(#0073e6 0% 92%, #e6e6e6 92% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #0073e6;
+      margin: 0 auto 20px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    }
+    #dashboard .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    #dashboard .metric-box {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 6px;
+      width: 28%;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #dashboard .metric-box h3 {
+      margin: 0 0 10px;
+      color: #0073e6;
+    }
+    /* Simulated Chart (Bar Chart) */
+    #dashboard .chart {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 150px;
+      margin-top: 20px;
+    }
+    #dashboard .bar {
+      width: 20%;
+      background: #0073e6;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+    }
+    #dashboard .bar span {
+      position: absolute;
+      top: -25px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #0073e6;
+    }
+    /* Expert Query Module Styles */
+    #query .query-box {
+      display: flex;
+      align-items: center;
+      background: #f0fbff;
+      border: 2px solid #0073e6;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    #query .query-box input {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    #query .query-box button {
+      padding: 12px 16px;
+      background: #0073e6;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #query .history-log {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 6px;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #query .history-log p {
+      font-size: 14px;
+      margin: 8px 0;
+    }
+    /* Report Screen Styles */
+    #report .report-details {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    #report .download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #0073e6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-container">
+    <div class="tabs">
+      <button class="tablink active" onclick="openTab(event, 'upload')">Upload Screen</button>
+      <button class="tablink" onclick="openTab(event, 'dashboard')">Dashboard</button>
+      <button class="tablink" onclick="openTab(event, 'query')">Expert Query Module</button>
+      <button class="tablink" onclick="openTab(event, 'report')">Report Screen</button>
+    </div>
+
+    <!-- Upload Screen -->
+    <div id="upload" class="tabcontent active">
+      <div class="section-title">Upload Artwork</div>
+      <div class="wireframe-box upload-area">
+        <p>Drag & Drop Your Artwork Here</p>
+        <input type="file" accept="image/*">
+      </div>
+      <div class="wireframe-box">
+        <p><strong>File Processing:</strong></p>
+        <p>Automatically detects file type (JPEG, PNG) and validates file size (Max: 50MB).</p>
+        <div class="file-info">Example: JPEG | 3.5 MB</div>
+      </div>
+      <div class="section-title">Editing Tools & Instructions</div>
+      <div class="tools">
+        <div>✂️ Crop</div>
+        <div>✨ Enhance</div>
+        <div>🔍 Zoom</div>
+        <div>🔄 Rotate</div>
+      </div>
+      <p class="file-info">Instructions: Upload a high-resolution image. Supported formats: JPEG, PNG. Max file size: 50MB.</p>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="tabcontent">
+      <div class="section-title">Dashboard Analytics</div>
+      <div class="wireframe-box score-circle">
+        92%
+      </div>
+      <p style="text-align:center; font-size:16px; color:#0073e6;">Authenticity Score</p>
+      <div class="metrics">
+        <div class="metric-box">
+          <h3>Brushstroke Consistency</h3>
+          <p>95%</p>
+        </div>
+        <div class="metric-box">
+          <h3>Pigment Analysis</h3>
+          <p>88%</p>
+        </div>
+        <div class="metric-box">
+          <h3>Texture Uniformity</h3>
+          <p>90%</p>
+        </div>
+      </div>
+      <div class="section-title">Feature Comparison Chart</div>
+      <div class="chart">
+        <div class="bar" style="height: 80px;"><span>80%</span></div>
+        <div class="bar" style="height: 92px;"><span>92%</span></div>
+        <div class="bar" style="height: 70px;"><span>70%</span></div>
+        <div class="bar" style="height: 85px;"><span>85%</span></div>
+      </div>
+    </div>
+
+    <!-- Expert Query Module -->
+    <div id="query" class="tabcontent">
+      <div class="section-title">Expert Query Module</div>
+      <div class="wireframe-box query-box">
+        <input type="text" placeholder="Type your query here...">
+        <button>🎤 Speak</button>
+      </div>
+      <div class="wireframe-box history-log">
+        <p><strong>Query History:</strong></p>
+        <p><em>User:</em> "Are there any anomalies in the pigment distribution?"</p>
+        <p><em>AI Response:</em> "The analysis shows consistent pigment layering, with a minor variance in the lower left quadrant."</p>
+        <p><em>User:</em> "What are the typical markers of forgery in this style?"</p>
+        <p><em>AI Response:</em> "Forgery indicators include irregular brushstrokes and inconsistent texture patterns."</p>
+      </div>
+      <div class="wireframe-box">
+        <p><strong>Module Features:</strong></p>
+        <ul>
+          <li>Voice-to-text input for hands-free queries</li>
+          <li>Real-time AI-generated responses</li>
+          <li>Toggle between text and voice feedback modes</li>
+          <li>Maintains a history log of all queries and responses</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Report Screen -->
+    <div id="report" class="tabcontent">
+      <div class="section-title">Detailed Authentication Report</div>
+      <div class="wireframe-box report-details">
+        <p><strong>Report Summary:</strong></p>
+        <ul>
+          <li>Brushstroke analysis indicates 92% consistency.</li>
+          <li>Pigment composition aligns with historical records (88% match).</li>
+          <li>Texture evaluation shows uniformity with minor anomalies.</li>
+          <li>Suggested valuation: <strong>$150,000 - $175,000</strong></li>
+        </ul>
+        <p>This report provides a comprehensive analysis of the artwork's authenticity and valuation, integrating multiple data points for a robust assessment.</p>
+      </div>
+      <a class="download-btn" href="#">⬇️ Download Report</a>
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    // Set initial active tab manually
+    document.getElementById("upload").classList.add("active");
+  </script>
+</body>
+</html>
